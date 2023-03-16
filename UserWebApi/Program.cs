@@ -16,9 +16,9 @@ builder.Services.AddControllers();
 var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 Console.WriteLine(connection);
 //service for PostgreSQL
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(connection));
-
+//builder.Services.AddDbContext<AppDbContext>(options =>
+//    options.UseNpgsql(connection));
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connection));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddEndpointsApiExplorer();
